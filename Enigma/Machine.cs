@@ -17,7 +17,19 @@ namespace Enigma
      * 
      * Input: CIXHNHWGK
      * Output:
+     * 
+     * press esc to go back
      */
+
     {
+        public string inputMsg { get; set; } = "";
+        public string outputMsg { get; private set; } = "";
+
+        public Machine()
+        {
+
+        }
+    
+
     }
 }
