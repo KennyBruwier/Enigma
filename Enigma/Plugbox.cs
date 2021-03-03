@@ -29,7 +29,16 @@ namespace Enigma
      *   Press escape to go back, or another key to plug another wire.
      *   
      */
-    class Plugbox
+    public class Plugbox
     {
+        public string encryptionKeysLeft { get; set; }
+        public string encryptionKeysRight { get; set; }
+
+
+        public Plugbox()
+        {
+            encryptionKeysLeft  = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            encryptionKeysRight = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        }
     }
 }
