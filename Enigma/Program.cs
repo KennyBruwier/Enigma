@@ -31,7 +31,8 @@ namespace Enigma
         {
             Rotor[] aantalRotors = new Rotor[5];
             Plugbox enigmaPlugbox = new Plugbox();
-
+            Enigma enigma = new Enigma();
+            enigma = new Enigma();
             // default/start waarden invullen
 
             int[] currentRotors = { 1, 2, 3 };
@@ -42,7 +43,7 @@ namespace Enigma
             for (int i = 0; i < aantalRotors.Length; i++)
             {
                 aantalRotors[i] = new Rotor();
-                aantalRotors[i].myCode = i + 1;
+                aantalRotors[i].myCode = i ;
 
             }
 
@@ -56,7 +57,7 @@ namespace Enigma
             // menu keuze functie aanmaken
 
             Console.Write($"\n");
-            Console.WriteLine($"[1] Use the machine.\n" +
+            Console.WriteLine(  $"[1] Use the machine.\n" +
                                 $"[2] Change the rotors.\n" +
                                 $"[3] Wire the plugbox.\n" +
                                 $"[4] Exit the application\n");
@@ -83,7 +84,7 @@ namespace Enigma
 
             void printRotor()
             {
-                foreach (Rotor enigmaRotor in aantalRotors)
+                foreach (Rotor enigmaRotor in enigma.Rotors)
                 {
                     if (currentRotors.Contains(enigmaRotor.myCode))
                     {
@@ -93,12 +94,12 @@ namespace Enigma
                 }
 
                 Console.Write("\n");
-                foreach (Rotor enigmaRotor in aantalRotors)
+                foreach (Rotor enigmaRotor in enigma.Rotors)
                 {
                     if (currentRotors.Contains(enigmaRotor.myCode))
                     {
 
-                        Console.Write("[ " + String.Format("{0:00}", enigmaRotor.myRotation + 1) + " ] ");
+                        Console.Write("[ " + String.Format("{0:00}", enigmaRotor.myRotation ) + " ] ");
                     }
 
                 }
@@ -149,23 +150,18 @@ namespace Enigma
                     printRotor();
 
 
-                    Console.Write("\n" +
+                    Console.Write(  "\n" +
                                     $"Input:    {inputMsg}\n" +
                                     $"Output:   {outputMsg}\n\n" +
                                     $"(Esc) key to go back\n");
 
                     keyinfo = Console.ReadKey(true);
                     inputMsg += Char.ToUpper(keyinfo.KeyChar);
+                    outputMsg += enigma.Gebruiken(Char.ToUpper(keyinfo.KeyChar));
                 }
                 while (keyinfo.Key != ConsoleKey.Escape);
 
-
-
-
-
             }
-
-
 
         }
 
